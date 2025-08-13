@@ -10,9 +10,9 @@ df = pd.read_csv("/Users/niteshnirranjan/Downloads/DCT_mal.csv")
 X = df.iloc[:,0:196].where(df["LABEL"] == 2).dropna()
 Y = df["LABEL"].where(df["LABEL"] == 2).dropna()
 
-#Calculating Entropy  
+#Calculating Gini  
 counts = df["LABEL"].value_counts().values
 probability = counts / counts.sum()
-entropy = -np.sum(probability * np.log2(probability))
+gini = 1 -np.sum(probability * probability)
 
-print("Entropy :",entropy)
+print("Gini index :",gini)
